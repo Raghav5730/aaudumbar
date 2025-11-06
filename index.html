@@ -1,0 +1,838 @@
+<!-- Save this as index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Aaudumbar Agro Pvt Ltd — Fresh & Trusted</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* =======================
+   :root variables
+======================= */
+:root{
+  --accent:#6B8E23;       /* dark sage green for buttons / accents */
+  --accent-hover:#567d1e;
+  --muted:#4A4A4A;        /* text color */
+  --bg:#F5F0E6;           /* beige background */
+  --card:#E6EFE1;         /* soft sage card background */
+  --glass: rgba(255,255,255,0.85);
+  --shadow: 0 10px 25px rgba(16,24,40,0.06);
+  --transition-speed:0.5s;
+}
+
+/* =======================
+   Global Styles
+======================= */
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:'Montserrat',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+  color: var(--muted);
+  background: var(--bg);
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit; text-decoration:none;}
+h1,h2,h3,h4,h5,h6{margin:0;}
+p{margin:0;}
+section{padding:4rem 1rem;position:relative;}
+
+/* =======================
+   Header #header
+======================= */
+header.site-header{
+  background: linear-gradient(90deg, #9CAF88 0%, #6B8E23 100%);
+  color: #fff;
+  position: sticky;
+  top:0;
+  z-index:50;
+  box-shadow: 0 3px 8px rgba(2,6,23,0.12);
+  transition: all var(--transition-speed);
+}
+header .container{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0.8rem 1rem;
+}
+nav.site-nav a{
+  color: rgba(255,255,255,0.95);
+  font-weight:600;
+  padding:.35rem .6rem;
+  border-radius:6px;
+  transition: background .3s;
+}
+nav.site-nav a:hover{
+  background: rgba(255,255,255,0.08);
+}
+
+/* =======================
+   Hero #home
+======================= */
+.hero {
+  position: relative;
+  height: 85vh;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  background-image: url('farm.avif'); /* your image URL */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+}
+
+/* overlay to make text readable */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* dark overlay, adjust opacity */
+  pointer-events: none;
+}
+
+/* hero-inner content on top of overlay */
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: 0 1rem;
+}
+
+.hero h1 {
+  font-size: 2.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.hero p {
+  font-size: 1.05rem;
+  margin-bottom: 1.2rem;
+}
+
+/* search bar */
+.search-wrap {
+  display: inline-flex;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 6px;
+  box-shadow: 0 10px 25px rgba(16,24,40,0.06);
+  align-items: center;
+}
+
+.search-wrap input {
+  border: 0;
+  padding: 0.95rem 1rem;
+  min-width: 320px;
+  font-size: 1rem;
+  border-radius: 10px;
+  outline: none;
+  background: transparent;
+}
+
+.search-wrap button {
+  background: #6B8E23; /* button color */
+  border: 0;
+  color: #fff;
+  padding: 0.85rem 1.1rem;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.search-wrap button:hover {
+  background: #567d1e; /* hover effect */
+}
+/* =======================
+   Categories #categories
+======================= */
+#categories {
+  background: linear-gradient(to bottom, #F0F5EB, #E0F0D8);
+  padding: 5rem 0;
+}
+
+#categories .section-title {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: #6B8E23; /* strong accent for heading */
+  font-weight: 700;
+}
+
+.cats {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cat {
+  background: #E6EFE1; /* slightly darker than section bg */
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(16,24,40,0.12);
+  min-width: 150px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cat:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(107,142,35,0.3);
+}
+
+.cat img {
+  width: 100%;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.6rem;
+}
+
+.cat strong {
+  color: #3E5F20; /* darker text for category names */
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* subtle reveal animation */
+.cat.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.cat.reveal.show {
+  opacity: 1;
+  transform: none;
+}
+
+/* =======================
+   Products #products
+======================= */
+#products {
+  background: linear-gradient(to bottom, #FBFCF5, #E8F0D6);
+  padding: 5rem 0;
+}
+
+#products .section-title {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: #6B8E23;
+  font-weight: 700;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.2rem;
+}
+
+.product {
+  background: #E6EFE1;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 10px 25px rgba(16,24,40,0.12);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.product:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 46px rgba(107,142,35,0.25);
+}
+
+.product .thumb {
+  height: 160px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.product .thumb img {
+  width: auto%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product h3 {
+  margin: 0.8rem 0 0.3rem;
+  color: #3E5F20;
+  font-size: 1.05rem;
+}
+
+.meta {
+  color: #4A4A4A;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  margin-top: auto;
+  font-weight: 700;
+  color: #6B8E23;
+  font-size: 1.05rem;
+}
+
+.chip {
+  background: #f1f5f9;
+  padding: 0.25rem 0.6rem;
+  border-radius: 18px;
+  font-size: 0.78rem;
+  color: #4A4A4A;
+}
+
+/* subtle reveal animation */
+.product.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.product.reveal.show {
+  opacity: 1;
+  transform: none;
+}
+
+/* =======================
+   Spacing between sections
+======================= */
+#about {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+#contact {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+
+/* =======================
+   About #about
+======================= */
+/* #About Section */
+/* #About Section */
+.about-hero {
+  position: relative;
+  background-image: url('abo.avif');
+  background-size: cover;
+  background-position: center;
+  padding: 6rem 1rem;
+  text-align: center;
+}
+
+.about-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.about-inner {
+  position: relative; /* above overlay */
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.8;
+  color: rgb(240, 241, 219); /* your custom color */
+}
+
+.about-inner h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+  color: rgb(240, 241, 219);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+}
+
+.about-inner p {
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  color: rgb(240, 241, 219);
+  text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s forwards;
+}
+
+.about-inner p:nth-child(2) { animation-delay: 0.2s; }
+.about-inner p:nth-child(3) { animation-delay: 0.4s; }
+.about-inner p:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+/* #Contact Section - Dark & Image Background */
+#contact {
+  position: relative;
+  background: url('get.avif') center/cover no-repeat;
+  color: rgb(240, 241, 219);
+  padding: 5rem 1rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+#contact::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6); /* dark overlay to make text readable */
+  z-index: 0;
+}
+
+#contact h2 {
+  position: relative;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: rgb(240, 241, 219);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+  z-index: 1;
+}
+
+.contact-card {
+  position: relative;
+  background: rgba(44, 44, 44, 0.85); /* semi-transparent card over image */
+  padding: 2rem;
+  border-radius: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1;
+}
+
+.contact-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.7);
+}
+
+.contact-card input,
+.contact-card textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 10px;
+  background: rgba(58, 58, 58, 0.9); /* input field darker transparent */
+  color: rgb(240, 241, 219);
+  font-size: 1rem;
+  outline: none;
+  transition: background 0.2s;
+}
+
+.contact-card input::placeholder,
+.contact-card textarea::placeholder {
+  color: #c5c5c5;
+}
+
+.contact-card input:focus,
+.contact-card textarea:focus {
+  background: rgba(74, 74, 74, 0.95);
+}
+
+.btn-contact {
+  background: #6B8E23; /* theme accent */
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  font-weight: 700;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn-contact:hover {
+  background: #567d1e;
+  transform: translateY(-2px);
+}
+
+#contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+/* Section spacing */
+#products, #about, #contact {
+  padding-top: 5rem;   /* more space above */
+  padding-bottom: 5rem; /* more space below */
+}
+
+
+
+/* =======================
+   Footer #footer
+======================= */
+footer.site-footer{
+  background: var(--accent);
+  color:#fff;
+  padding:1.4rem 0;
+  text-align:center;
+  animation: fadeIn 1.2s ease forwards;
+}
+
+/* =======================
+   Animations
+======================= */
+@keyframes fadeInUp{
+  0%{opacity:0; transform:translateY(30px);}
+  100%{opacity:1; transform:translateY(0);}
+}
+@keyframes fadeIn{
+  0%{opacity:0;}
+  100%{opacity:1;}
+}
+
+/* =======================
+   Responsive
+======================= */
+@media (max-width:900px){
+  .hero h1{font-size:1.8rem;}
+  .search-wrap input{min-width:180px;}
+  .products-grid{grid-template-columns:1fr;}
+}
+@media (max-width: 900px){
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+  .cats {
+    flex-direction: column;
+  }
+}
+
+</style>
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="brand">
+      <div style="font-size:1.2rem">Aaudumbar Agro Pvt Ltd</div>
+      <small>Farm-to-market • Fresh produce & trusted suppliers</small>
+    </div>
+
+    <nav class="site-nav" aria-label="Main">
+      <a href="#home">Home</a>
+      <a href="#categories">Categories</a>
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-inner container">
+    <h1>Trusted suppliers of premium agricultural commodities</h1>
+    <p>delivering superior-grade fruits, vegetables, and grains, nurtured with precision and packed with integrity for partners across India and the world.</p>
+
+    <form class="search-wrap" id="mainSearch" style="margin-top:12px" aria-label="Search products">
+      <input id="searchInput" placeholder="Search products, e.g. 'basmati rice', 'ginger', 'onions'">
+      <button type="submit">Search</button>
+    </form>
+
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section id="categories">
+  <div class="container">
+    <h2 class="section-title">Product categories</h2>
+    <div class="cats" id="catList">
+      <!-- categories inserted by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="container">
+    <h2 class="section-title">Our products</h2>
+
+    <div style="display:flex;gap:12px;justify-content:center;margin-bottom:1rem;flex-wrap:wrap">
+      <select id="filterCategory" style="padding:.5rem;border-radius:8px;border:1px solid #e6e9ef">
+        <option value="">All categories</option>
+      </select>
+
+      <button id="clearBtn" class="btn" style="background:#80e085">Clear</button>
+    </div>
+
+    <div class="products-grid" id="productsGrid">
+      <!-- products inserted by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about-hero">
+  <div class="about-inner container">
+    <h2>About Aaudumbar Agro Pvt Ltd</h2>
+    <p>
+      Aaudumbar Agro Pvt Ltd is a premier agro-export and supply company dedicated to connecting businesses with India’s finest agricultural produce. With a focus on quality, reliability, and sustainability, we source premium fruits, vegetables, grains, pulses, and specialty products from trusted growers across the country.
+    </p>
+    <p>
+      Our mission is to provide high-grade, ethically-sourced commodities while ensuring traceability, proper handling, and timely delivery. Leveraging modern logistics and cold-chain systems, we guarantee that every product reaches our partners in optimal condition, maintaining freshness, taste, and quality.
+    </p>
+    <p>
+      At Aaudumbar Agro, we believe in forging long-term relationships with both suppliers and buyers. Our commitment to transparency, excellence, and customer satisfaction sets us apart in the agricultural supply industry.
+    </p>
+    <p><strong>Address:</strong> Plot No.5, Prerna Nagar, Garkheda Parisar, Chattrapti Sambhaji Nagar, Maharashtra 431009</p>
+  </div>
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title">Get in touch</h2>
+    <div class="contact-card">
+      <form id="contactForm">
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Email" required>
+        </div>
+        <div style="margin-top:.6rem">
+          <textarea name="message" rows="4" placeholder="Message / Enquiry" required></textarea>
+        </div>
+        <div style="margin-top:.7rem;text-align:right">
+          <button class="btn" type="submit">Send message</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer" style="background:#334d1f;color:#f0f1db;padding:2.5rem 1rem;">
+  <div class="container" style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem;align-items:flex-start;">
+    
+    <!-- Company Info -->
+    <div style="flex:1;min-width:220px">
+      <h3 style="margin-bottom:.6rem;color:#f0f1db">Aaudumbar Agro Pvt Ltd</h3>
+      <p style="line-height:1.6;font-size:.95rem;color:#f0f1db">
+        Plot No.5, Prerna Nagar,<br>
+        Garkheda Parisar,<br>
+        Chattrapti Sambhaji Nagar,<br>
+        Maharashtra 431009
+      </p>
+    </div>
+
+    <!-- Contact Info -->
+    <div style="flex:1;min-width:200px">
+      <h3 style="margin-bottom:.6rem;color:#f0f1db">Contact</h3>
+      <p style="margin:.3rem 0;font-size:.95rem;color:#f0f1db">Phone: <a href="tel:+919876543210" style="color:#f0f1db;text-decoration:none">+91 98765 43210</a></p>
+      <p style="margin:.3rem 0;font-size:.95rem;color:#f0f1db">Email: <a href="mailto:info@aaudumbaragro.com" style="color:#f0f1db;text-decoration:none">info@aaudumbaragro.com</a></p>
+    </div>
+
+    <!-- Social Media -->
+    <div style="flex:1;min-width:180px">
+      <h3 style="margin-bottom:.6rem;color:#f0f1db">Follow Us</h3>
+      <div style="display:flex;gap:0.8rem;margin-top:0.5rem">
+        <a href="https://www.instagram.com" target="_blank" style="color:#f0f1db;font-size:1.6rem;"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/919876543210" target="_blank" style="color:#f0f1db;font-size:1.6rem;"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.facebook.com" target="_blank" style="color:#f0f1db;font-size:1.6rem;"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
+    
+    <!-- Quick Links -->
+    <div style="flex:1;min-width:180px">
+      <h3 style="margin-bottom:.6rem;color:#f0f1db">Quick Links</h3>
+      <ul style="list-style:none;padding:0;margin:0;font-size:.95rem">
+        <li><a href="#home" style="color:#f0f1db;text-decoration:none">Home</a></li>
+        <li><a href="#categories" style="color:#f0f1db;text-decoration:none">Categories</a></li>
+        <li><a href="#products" style="color:#f0f1db;text-decoration:none">Products</a></li>
+        <li><a href="#about" style="color:#f0f1db;text-decoration:none">About</a></li>
+        <li><a href="#contact" style="color:#f0f1db;text-decoration:none">Contact</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div style="text-align:center;margin-top:2rem;color:#dcdcc1;font-size:.85rem">
+    © <span id="yr2"></span> Aaudumbar Agro Pvt Ltd — All Rights Reserved
+  </div>
+</footer>
+
+<!-- FontAwesome for social icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<script>document.getElementById('yr2').textContent = new Date().getFullYear();</script>
+
+
+<!-- product detail modal -->
+<div id="productModal" class="modal" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true">
+    <div class="m-thumb"><img src="" alt=""></div>
+    <div class="m-body">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <h3 id="mTitle"></h3>
+          <div id="mCat" style="color:var(--muted)"></div>
+        </div>
+        <button class="close-btn" id="closeModal">Close</button>
+      </div>
+      <p id="mDesc" style="margin-top:.8rem;color:var(--muted)"></p>
+     
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* --- DATA: products & categories (edit these entries as needed) --- */
+const products = [
+  {id:1, title:'Basmati Rice (Premium)', cat:'Grains', price:'₹55 / kg', img:'bas.avif'},
+  {id:2, title:'Fresh Onions (Bulk)', cat:'Vegetables', price:'₹8 / kg', img:'oni.avif', desc:'Cleaned and graded onions, packed for transportation.'},
+  {id:3, title:'Organic Ginger', cat:'Spices', price:'₹120 / kg', img:'gig.avif', desc:'Fresh and pungent ginger — ideal for processing and retail.'},
+  {id:4, title:'Fresh Mangoes (Seasonal)', cat:'Fruits', price:'₹60 / kg', img:'mag.avif', desc:'Sweet, hand-picked mangoes packed carefully for export.'},
+  {id:5, title:'Sunflower Oil (Refined)', cat:'Oils', price:'₹160 / L', img:'sun.jpg', desc:'Food-grade refined oil packaged in HDPE drums or bottles.'},
+  {id:6, title:'Red Lentils (Masoor)', cat:'Pulses', price:'₹95 / kg', img:'mas.avif', desc:'High-protein split lentils, cleaned and packed.'},
+  {id:7, title:'Dehydrated Onion Flakes', cat:'Processed', price:'₹420 / kg', img:'deon.jpg', desc:'Perfect for food processing, ready-to-use dehydrated onion.'},
+  {id:8, title:'Organic Wheat (Bulk)', cat:'Grains', price:'₹30 / kg', img:'weh.jpg', desc:'Premium wheat, cleaned and moisture-tested.'}
+    
+];
+
+const categories = [...new Set(products.map(p=>p.cat))];
+
+/* --- UI populate --- */
+const catList = document.getElementById('catList');
+const filterCategory = document.getElementById('filterCategory');
+const productsGrid = document.getElementById('productsGrid');
+const yr2 = document.getElementById('yr2');
+if (yr2) yr2.textContent = new Date().getFullYear();
+
+
+/* insert categories */
+// ---------- Custom Category Images ------------
+function renderCategories(){
+  // define your category → image mapping
+  const categoryImages = {
+    "Grains": "gra.avif",
+    "Vegetables": "veg.avif",
+    "Spices": "Tur.jpeg",
+    "Fruits": "mag.avif",
+    "Oils": "sun.jpg",
+    "Pulses": "mas.avif",
+    "Processed": "deon.jpg"
+  };
+
+  categories.forEach(c=>{
+    const imgSrc = categoryImages[c] || `https://via.placeholder.com/300x90?text=${encodeURIComponent(c)}`;
+    const div = document.createElement('div');
+    div.className = 'cat reveal';
+    div.innerHTML = `<img src="${imgSrc}" alt="${c}"><strong>${c}</strong>`;
+    div.onclick = ()=>{ filterByCategory(c); };
+    catList.appendChild(div);
+
+    const opt = document.createElement('option');
+    opt.value = c; 
+    opt.textContent = c;
+    filterCategory.appendChild(opt);
+  });
+}
+// ----------------------------------------------
+
+
+/* render products */
+function renderProducts(list){
+  productsGrid.innerHTML = '';
+  if(list.length===0){
+    productsGrid.innerHTML = '<p style="text-align:center;color:var(--muted);grid-column:1/-1">No products found.</p>';
+    return;
+  }
+  list.forEach(p=>{
+    const card = document.createElement('article');
+    card.className = 'product reveal';
+    card.innerHTML = `
+      <div class="thumb"><img src="${p.img}" alt="${p.title}"></div>
+      <h3>${p.title}</h3>
+      <div class="meta">${p.cat} •  In stock</div>
+      <div class="tags"><span class="chip">FOB available</span><span class="chip">Bulk pack</span></div>
+      <div class="price">${p.price}</div>
+    `;
+    card.onclick = ()=>openModal(p);
+    productsGrid.appendChild(card);
+  });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+}
+
+/* filtering and search */
+function filterByCategory(cat){
+  filterCategory.value = cat;
+  const filtered = products.filter(p=>p.cat===cat);
+  renderProducts(filtered);
+  window.scrollTo({top:document.getElementById('products').offsetTop-80, behavior:'smooth'});
+}
+
+document.getElementById('clearBtn').addEventListener('click', ()=>{
+  filterCategory.value = '';
+  document.getElementById('searchInput').value = '';
+  renderProducts(products);
+});
+
+filterCategory.addEventListener('change', ()=>{
+  const v = filterCategory.value;
+  if(!v) renderProducts(products);
+  else renderProducts(products.filter(p=>p.cat===v));
+});
+
+/* search */
+document.getElementById('mainSearch').addEventListener('submit', function(e){
+  e.preventDefault();
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  if(!q){ alert('Please enter a search term.'); return; }
+  const res = products.filter(p => (p.title + ' ' + p.desc + ' ' + p.cat).toLowerCase().includes(q));
+  renderProducts(res);
+});
+
+
+
+/* contact form mock */
+document.getElementById('contactForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  alert('Thanks — your message is received. We will contact you soon.');
+  e.target.reset();
+});
+
+/* scroll reveal using IntersectionObserver */
+const revealObserver = (function(){
+  const items = new Set();
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){ en.target.classList.add('show'); obs.unobserve(en.target); }
+    });
+  }, {threshold:0.12});
+  return {
+    observe(el){ items.add(el); obs.observe(el); },
+    observeAll(){ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el)); }
+    
+  };
+  
+  // Reveal About Section
+const aboutSection = document.querySelector('.about-inner');
+const aboutObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+      aboutObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+
+aboutObserver.observe(aboutSection);
+
+})();
+
+/* init */
+renderCategories();
+renderProducts(products);
+document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+
+</script>
+</body>
+</html>
